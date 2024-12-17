@@ -1,0 +1,10 @@
+#!/bin/bash
+#SBATCH --partition=paul
+#SBATCH --ntasks=1
+#SBATCH --mem=25G
+#SBATCH --array=0-25
+#SBATCH --time 12:00:00
+
+ID=$SLURM_ARRAY_TASK_ID
+
+/work/usename-workspace/folder/relax.sh WWAV_ox_INPUT $ID

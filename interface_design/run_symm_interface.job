@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#SBATCH --ntasks=1
+#SBATCH --mem=5G
+#SBATCH --time=2-0:00:00
+#SBATCH --array=1-1000
+#SBATCH --partition=paul
+#SBATCH --output=slurm.txt 
+#SBATCH --job-name="interface"
+
+task=$SLURM_ARRAY_TASK_ID
+module load Rosetta/3.13-gompi-2020b
+
+symfile=input.symm
+input=input.pdb
+
+mkdir -p output
+
+rosetta_scripts.mpi.linuxgccrelease @design.options \
+	-parser:protocol sym_design.xml \
+	-s $input \
+	-parser:script_vars symfile=$symfile \
+	-out:file:scorefile des_relax-design.sc \
+	-out:suffix _des_relax-design \
+	-overwrite > des_design.log
+	
+	
+        
+

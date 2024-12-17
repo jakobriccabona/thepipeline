@@ -1,0 +1,1 @@
+~/develop/Rosetta/main/source/bin/rosetta_scripts.pytorchtensorflow.linuxclangrelease @ path to/design.options -parser:protocol path to/sample_mutations.xml -parser:script_vars sym=symm file -s input.pdb -out:path:all output -overwrite
